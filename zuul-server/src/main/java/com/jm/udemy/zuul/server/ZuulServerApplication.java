@@ -1,15 +1,19 @@
-package com.jm.udemy;
+package com.jm.udemy.zuul.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
-@EnableEurekaClient
 @SpringBootApplication
-public class MicroserviceProductsApplication
+@EnableEurekaClient
+@EnableZuulProxy
+public class ZuulServerApplication
 {
+
     public static void main(String[] args)
     {
-        SpringApplication.run(MicroserviceProductsApplication.class, args);
+        SpringApplication.run(ZuulServerApplication.class, args);
     }
+
 }

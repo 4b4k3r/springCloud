@@ -29,10 +29,12 @@ public class ProductController
     }
 
     @GetMapping("/{id}")
-    public Product findProductById(@PathVariable Long id)
+    public Product findProductById(@PathVariable Long id) throws Exception
     {
         Product product = productService.findById(id);
         product.setPort(port);
+        //Para generar error de timeout
+        //Thread.sleep(2000L);
         return product;
     }
 }
