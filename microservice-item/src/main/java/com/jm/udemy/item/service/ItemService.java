@@ -1,5 +1,6 @@
 package com.jm.udemy.item.service;
 
+import com.jm.udemy.commons.service.model.entity.Product;
 import com.jm.udemy.item.client.ProductClientRest;
 import com.jm.udemy.item.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,20 @@ public class ItemService
     public Item findById(Long id, Integer quantity)
     {
         return new Item(productClientRest.findById(id), quantity);
+    }
+
+    public Product save(Product product)
+    {
+        return productClientRest.save(product);
+    }
+
+    public Product update(Product product, Long id)
+    {
+        return productClientRest.update(product, id);
+    }
+
+    public void delete(Long id)
+    {
+        productClientRest.deleteById(id);
     }
 }

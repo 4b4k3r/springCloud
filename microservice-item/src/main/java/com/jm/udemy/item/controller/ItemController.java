@@ -1,20 +1,17 @@
 package com.jm.udemy.item.controller;
 
+import com.jm.udemy.commons.service.model.entity.Product;
 import com.jm.udemy.item.model.Item;
-import com.jm.udemy.item.model.Product;
 import com.jm.udemy.item.service.ItemService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/item")
 public class ItemController
 {
     @Autowired
@@ -31,6 +28,26 @@ public class ItemController
     public Item findAll(@PathVariable Long id, @PathVariable Integer quantity)
     {
         return itemService.findById(id, quantity);
+    }
+
+    @PostMapping("/product")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Product create(@RequestBody Product product)
+    {
+        return itemService.save(product);
+    }
+
+    @PutMapping("/product/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Product create(@RequestBody Product product, @PathVariable Long id)
+    {
+        return itemService.update(product, id);
+    }
+
+    @DeleteMapping("/product/{id}")
+    public void deleteById(@PathVariable Long id)
+    {
+        itemService.delete(id);
     }
 
     private Item metodoAlternativo(Long id, Integer quantity)

@@ -1,5 +1,6 @@
 package com.jm.udemy.item.model;
 
+import com.jm.udemy.commons.service.model.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
